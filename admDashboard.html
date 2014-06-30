@@ -1,0 +1,650 @@
+<!doctype html>
+<html class="no-js" ng-app="myapp">
+  <head>
+    <meta charset="UTF-8">
+    <title>ADM - Dashboard</title>
+
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="web/lib/bootstrap/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="web/lib/font-awesome/css/font-awesome.min.css">
+
+    <!-- To work Font Awosome in Firefox use below link -->
+    <link href='//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' rel='stylesheet'>
+    <link href='//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css' rel='stylesheet'>
+  
+    <link rel="stylesheet" href="web/lib/datatables/3/dataTables.bootstrap.css">
+    <!-- Metis core stylesheet -->
+    <link rel="stylesheet" href="web/css/main.min.css">
+    <link rel="stylesheet" href="web/css/AdminLTE.css">
+    
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <!--[if lt IE 9]>
+      <script src="web/lib/html5shiv/html5shiv.js"></script>
+        <script src="web/lib/respond/respond.min.js"></script>
+        <![endif]-->
+
+    <!--For Development Only. Not required -->
+    <script>
+      less = {
+        env: "development",
+        relativeUrls: false,
+        rootpath: "../web/"
+      };
+    </script>
+    <link rel="stylesheet" href="web/css/style-switcher.css">
+    <link rel="stylesheet/less" type="text/css" href="web/css/less/theme.less">
+    <script src="web/lib/less/less-1.7.1.min.js"></script>
+
+    <!--Modernizr 2.8.2-->
+    <script src="web/lib/modernizr/modernizr.min.js"></script>
+    </head>
+    <body>
+        <div class="bg-dark dk" id="wrap"> <!-- bg-dark dk -->
+            <div id="top"> <!-- div id=top -->
+                <!-- .navbar -->
+                <nav class="navbar navbar-inverse navbar-static-top">
+                  <div class="container-fluid bg-black dker" >
+
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <header class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span> 
+                        <span class="icon-bar"></span> 
+                        <span class="icon-bar"></span> 
+                        <span class="icon-bar"></span> 
+                      </button>
+                      <a href="#" class="navbar-brand" style="margin-top:23px;">
+                        <img src="web/img/metlife.png" alt=""> 
+                      </a> 
+                    </header>
+                   
+                    <div class="topnav" style="margin-top:23px;">
+                      
+                      <div class="btn-group">
+                        <a data-placement="bottom" data-original-title="Fullscreen" data-toggle="tooltip" class="btn btn-default btn-sm" id="toggleFullScreen">
+                          <i class="glyphicon glyphicon-fullscreen"></i>
+                        </a> 
+                      </div>
+                      <div class="btn-group">
+                        <a data-placement="bottom" data-original-title="E-mail" data-toggle="tooltip" class="btn btn-default btn-sm">
+                          <i class="fa fa-envelope"></i>
+                          <span class="label label-warning">5</span> 
+                        </a> 
+                        <a data-placement="bottom" data-original-title="Messages" href="#" data-toggle="tooltip" class="btn btn-default btn-sm">
+                          <i class="fa fa-comments"></i>
+                          <span class="label label-danger">4</span> 
+                        </a> 
+                        <a data-toggle="modal" data-original-title="Help" data-placement="bottom" class="btn btn-default btn-sm" href="#helpModal">
+                          <i class="fa fa-question"></i>
+                        </a> 
+                      </div>
+                      <div class="btn-group">
+                        <a href="login.html" data-toggle="tooltip" data-original-title="Logout" data-placement="bottom" class="btn btn-metis-1 btn-sm">
+                          <i class="fa fa-power-off"></i>
+                        </a> 
+                      </div>
+                      <div class="btn-group">
+                        <a data-placement="bottom" data-original-title="Show / Hide Left" data-toggle="tooltip" class="btn btn-primary btn-sm toggle-left" id="menu-toggle">
+                          <i class="fa fa-bars"></i>
+                        </a> 
+                        <a data-placement="bottom" data-original-title="Show / Hide Right" data-toggle="tooltip" class="btn btn-default btn-sm toggle-right"> <span class="glyphicon glyphicon-comment"></span>  </a> 
+                      </div>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                      <div class="text-center" style="padding-bottom:5px;"><h2>Automated Dentist Monitoring  </h2></div>
+
+                      <!-- .nav -->
+                      <!-- ul class="nav navbar-nav">
+                        <li class="active">
+                          <a href="dashboard.html">Dashboard</a> 
+                        </li>
+                        <li> <a href="table.html">Tables</a>  </li>
+                        <li> <a href="file.html">File Manager</a>  </li>
+                        <li class='dropdown '>
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Form Elements
+                            <b class="caret"></b>
+                          </a> 
+                          <ul class="dropdown-menu">
+                            <li> <a href="form-general.html">General</a>  </li>
+                            <li> <a href="form-validation.html">Validation</a>  </li>
+                            <li> <a href="form-wysiwyg.html">WYSIWYG</a>  </li>
+                            <li> <a href="form-wizard.html">Wizard &amp; File Upload</a>  </li>
+                          </ul>
+                        </li>
+                      </ul --><!-- /.nav -->
+                    </div>
+                  </div><!-- /.container-fluid -->
+                </nav><!-- /.navbar -->
+                <header class="head">
+                  <div class="search-bar">
+                    <form class="main-search" action="">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Provider Search ...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary btn-sm text-muted" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span> 
+                      </div>
+                    </form><!-- /.main-search -->
+                  </div><!-- /.search-bar -->
+                  <div class="main-bar">
+                    <!--h3><i class="fa fa-dashboard"></i>&nbsp; Provider</h3 -->
+                    <h3> Dashboard</h3>
+                  </div><!-- /.main-bar -->
+                </header><!-- /.head -->
+            </div>  <!-- / # id=top -->
+            <div id="left"> <!-- #id=left -->
+                <div class="media user-media bg-dark dker">
+                  <div class="user-media-toggleHover">
+                    <span class="fa fa-user"></span> 
+                  </div>
+                  <div class="user-wrapper bg-dark">
+                    <a class="user-link" href="">
+                      <img class="media-object img-thumbnail user-img" alt="User Picture" src="web/img/user.gif">
+                      <span class="label label-danger user-label">16</span> 
+                    </a> 
+                    <div class="media-body">
+                      <h5 class="media-heading">Dave D</h5>
+                      <ul class="list-unstyled user-info">
+                        <li> <a href="#">Administrator</a>  </li>
+                        <li>Last Access :
+                          <br>
+                          <small>
+                            <i class="fa fa-calendar"></i>&nbsp;19 June 16:32</small> 
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                 <!-- #menu -->
+                <ul id="menu" class="bg-blue dker">
+                  <li class="nav-header">Menu</li>
+                  <li class="nav-divider"></li>
+                  <li class="active">
+                    <a href="admDashboard.html">
+                      <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span> 
+                    </a> 
+                  </li>
+                  <li class="">
+                    <a href="javascript:;">
+                      <i class="fa fa-university "></i>
+                      <span class="link-title">Providers</span> 
+                      <span class="fa arrow"></span> 
+                    </a> 
+                    <ul>
+                      <li class="">
+                        <a href="#">
+                          <i class="fa fa-angle-right"></i>&nbsp;Actions</a> 
+                      </li>
+                      <li class="">
+                        <a href="#">
+                          <i class="fa fa-angle-right"></i>&nbsp;History</a> 
+                      </li>
+                      <li class="">
+                        <a href="fixed-header-menu.html">
+                          <i class="fa fa-angle-right"></i>&nbsp;Demographic Information</a> 
+                      </li>
+                      <li class="">
+                        <a href="#">
+                          <i class="fa fa-angle-right"></i>&nbsp;Notes</a> 
+                      </li>
+                      <li class="">
+                        <a href="#">
+                          <i class="fa fa-angle-right"></i>&nbsp;WatchList</a> 
+                      </li>
+                      <li class="">
+                        <a href="#">
+                          <i class="fa fa-angle-right"></i>&nbsp;Exclusion List</a> 
+                      </li>
+                      
+                    </ul>
+                  </li>
+                  <li class="">
+                    <a href="javascript:;">
+                      <i class="fa fa-dollar"></i>
+                      <span class="link-title">Claims</span> 
+                      <span class="fa arrow"></span> 
+                    </a> 
+                   </li> 
+                   <li class="">
+                    <a href="javascript:;">
+                      <i class="fa fa-paper-plane"></i>
+                      <span class="link-title">Correspondance</span> 
+                      <span class="fa arrow"></span> 
+                    </a> 
+                   </li>
+                   <li class="">
+                    <a href="javascript:;">
+                      <i class="fa fa-bar-chart-o"></i>
+                      <span class="link-title">Metrics</span> 
+                      <span class="fa arrow"></span> 
+                    </a> 
+                   </li>
+                </ur>
+            </div> <!--/ #id=left -->    
+            <div id="content"> <!-- # id = content-->
+                <div class="outer"><!-- div outer -->
+                    <div class="inner bg-light lter">
+                        <div class="text-center">
+                          <ul class="stats_box">
+                            <li>
+                              <div class="sparkline bar_week"></div>
+                              <div class="stat_text" style="min-width: 70px;">
+                                <strong>2.345</strong> Providers
+                               
+                              </div>
+                            </li>
+                            <li>
+                              <div class="sparkline line_day"></div>
+                              <div class="stat_text" style="min-width: 70px;">
+                                <strong>165</strong> Action History
+                              </div>
+                            </li>
+                            <li>
+                              <div class="sparkline pie_week"></div>
+                              <div class="stat_text" style="min-width: 70px;">
+                                <strong>$1.2 M</strong> Claims
+                              </div>
+                            </li>
+                            <li>
+                              <div class="sparkline stacked_month"></div>
+                              <div class="stat_text" style="min-width: 70px;">
+                                <strong>100:65</strong> Approval & Rejection Ratio
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                        <hr>
+                        <!-- Center Panels Starts here -->
+                        <hr>
+                          <div class="text-center">
+                            <a class="quick-btn" href="#">
+                              <i class="fa fa-bolt fa-2x"></i>
+                              <span><small>Watch List</small></span> 
+                              <span class="label label-default">2</span> 
+                            </a> 
+                            <a class="quick-btn" href="#">
+                              <i class="fa fa-list-alt fa-2x"></i>
+                              <span><small>Exclusion List</small></span> 
+                              <span class="label label-danger">2</span> 
+                            </a> 
+                            <!--a class="quick-btn" href="#">
+                              <i class="fa fa-map-marker fa-2x"></i>
+                              <span><small>Demographic</small></span> 
+                            </a> 
+                            <a class="quick-btn" href="#">
+                              <i class="fa fa-envelope fa-2x"></i>
+                              <span><small>Notes</small></span> 
+                              <span class="label label-success">456</span> 
+                            </a --> 
+                            <a class="quick-btn" href="#">
+                              <i class="fa fa-signal fa-2x"></i>
+                              <span><small>Metrics</small></span> 
+                              <span class="label label-warning">+25</span> 
+                            </a> 
+                            <a class="quick-btn" href="#">
+                              <i class="fa fa-dollar   fa-2x"></i>
+                              <span><small>Claim History</small></span> 
+                              <span class="label btn-metis-2">3.14 M</span> 
+                            </a> 
+                            <a class="quick-btn" href="#">
+                              <i class="fa fa-paper-plane fa-2x"></i>
+                              <span><small>Corresponance</small></span> 
+                              <span class="label btn-metis-4">2.71828</span> 
+                            </a> 
+                            <a class="quick-btn" href="#">
+                              <i class="fa fa-check fa-2x"></i>
+                              <span><small>Approval History</small></span> 
+                              <span class="label btn-metis-3">155</span> 
+                            </a> 
+                          </div>
+                        <hr>
+                        <!-- Dynamic Table Starts here -->
+                        <!--Begin Datatables-->
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="box">
+                              <header>
+                                <div class="icons">
+                                  <i class="fa fa-table"></i>
+                                </div>
+                                <h5>Analytics Recommendation</h5>
+                              </header>
+                              <div id="collapse4" class="body" ng-controller="ctrlRead" ng-init="onTableLoad()" style="overflow:auto;">
+                              <!--div id="collapse4" class="body" ng-controller="dashboardController" ng-init="providerTable.onLoad()" style="overflow:auto;">
+                                <input type="text" ng-model="nameFilter" placeholder="Search..."/>
+                                <table class="table table-bordered table-condensed table-hover table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th class="lastName" custom-sort order="'lastName'" sort="sort">Last name</th>
+                                      <th class="firstName" custom-sort order="'firstName'" sort="sort">First Name</th>
+                                      <th class="network" custom-sort order="'network'" sort="sort">Network</th>
+                                      <th class="dentalSchool" custom-sort order="'dentalSchool'" sort="sort">Dental School</th>
+                                      <th class="practiceDuration" custom-sort order="'practiceDuration'" sort="sort">Practice duration to 2013</th>
+                                      <th class="practiceType" custom-sort order="'practiceType'" sort="sort">Group/Solo Practice</th>
+                                      <th class="speciality" custom-sort order="'speciality'" sort="sort">Speciality</th>
+                                      <th class="providerTIN" custom-sort order="'providerTIN'" sort="sort">Provider TIN</th>
+                                      <th class="uniquePatients" custom-sort order="'uniquePatients'" sort="sort">2013 unique patients</th>
+                                      <th class="claims" custom-sort order="'claims'" sort="sort">2013 claims</th>
+                                      <th class="paidClaimAmount" custom-sort order="'paidClaimAmount'" sort="sort">2013 paid claim amount </th>
+                                      <th>Action</th>
+                                    </tr>
+                                  </thead>
+                                  <tfoot>
+                                      <td colspan="6">
+                                          <div class="pagination pull-right">
+                                              <ul>
+                                                  <li ng-class="{disabled: currentPage == 0}">
+                                                      <a href ng-click="prevPage()">« Prev</a>
+                                                  </li>
+                                              
+                                                  <li ng-repeat="n in range(pagedItems.length, currentPage, currentPage + gap) "
+                                                      ng-class="{active: n == currentPage}"
+                                                  ng-click="setPage()">
+                                                      <a href ng-bind="n + 1">1</a>
+                                                  </li>
+                                               
+                                                  <li ng-class="{disabled: (currentPage) == pagedItems.length - 1}">
+                                                      <a href ng-click="nextPage()">Next »</a>
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                      </td>
+                                  </tfoot>
+                                  <tbody>
+                                    <tr ng-repeat="provider in pagedItems[currentPage] | orderBy:sort.sortingOrder:sort.reverse | filter: nameFilter">
+                                      <td ng-bind="provider.lastName">LastName</td>
+                                      <td ng-bind="provider.firstName">First Name</td>
+                                      <td ng-bind="provider.network">Network</td>
+                                      <td ng-bind="provider.dentalSchool">Dental School</td>
+                                      <td ng-bind="provider.practiceDuration">Practice duration to 2013</td>
+                                      <td ng-bind="provider.practiceType">Group/Solo Practice</td>
+                                      <td ng-bind="provider.speciality">Speciality</td>
+                                      <td ng-bind="provider.providerTIN">Provider TIN</td>
+                                      <td ng-bind="provider.uniquePatients">2013 unique patients</td>
+                                      <td ng-bind="provider.claims">2013 claims</td>
+                                      <td ng-bind="provider.paidClaimAmount">2013 paid claim amount </td>
+                                      <td>
+                                        <a href="#">Approve </a> &nbsp;/&nbsp;
+                                        <a href="#">Notes </a> &nbsp;/&nbsp;
+                                        <a href="#">Modify </a> &nbsp;/&nbsp;
+                                        <a href="#">Reject </a> 
+                                      </td>
+                                    </tr>
+                                    
+                                  </tbody>
+                                </table -->
+                                <div class="col-lg-2 pull-right"> <input id="text1" class="form-control" type="text" ng-model="nameFilter" placeholder="Search..."/> </div>
+                                
+                                <table class="table table-striped table-condensed table-hover"  >
+                                  <thead>
+
+                                      <tr>
+                                          <th class="lastName" custom-sort order="'lastName'" sort="sort">Provider name</th>
+                                          <!--th class="firstName" custom-sort order="'firstName'" sort="sort">First Name</th>
+                                          <th class="network" custom-sort order="'network'" sort="sort">Network</th>
+                                          <th class="dentalSchool" custom-sort order="'dentalSchool'" sort="sort">Dental School</th>
+                                          <th class="practiceDuration" custom-sort order="'practiceDuration'" sort="sort">Practice duration to 2013</th>
+                                          <th class="practiceType" custom-sort order="'practiceType'" sort="sort">Group/Solo Practice</th>
+                                          <th class="speciality" custom-sort order="'speciality'" sort="sort">Speciality</th>
+                                          <th class="providerTIN" custom-sort order="'providerTIN'" sort="sort">Provider TIN</th -->
+                                          <th class="uniquePatients" custom-sort order="'uniquePatients'" sort="sort">2013 Claims</th>
+                                          <th class="paidClaimAmount" custom-sort order="'paidClaimAmount'" sort="sort">2013 Paid Claim Amount </th>
+                                          <th class="adjunctiveValue" custom-sort order="'adjunctiveValue'" sort="sort">Adjunctive Value </th>
+                                          <th class="adjunctiveGrade" custom-sort order="'adjunctiveGrade'" sort="sort">Adjunctive Grade </th>
+                                          <th class="periapicalValue" custom-sort order="'periapicalValue'" sort="sort">Periapical Value </th>
+                                          <th class="periapicalGrade" custom-sort order="'periapicalGrade'" sort="sort">Periapical Grade </th>
+                                          <th class="extractionValue" custom-sort order="'extractionValue'" sort="sort">Extraction Value </th>
+                                          <th class="extractionGrade" custom-sort order="'extractionGrade'" sort="sort">Extraction Grade </th>
+                                          <th class="coreBuildupValue" custom-sort order="'coreBuildupValue'" sort="sort">Core buildup Value </th>
+                                          <th class="coreBuildupGrade" custom-sort order="'coreBuildupGrade'" sort="sort">Core buildup Grade </th>
+                                          <th class="crownValue" custom-sort order="'crownValue'" sort="sort">Crown Value </th>
+                                          <th class="crownGrade" custom-sort order="'crownGrade'" sort="sort">Crown Grade </th>
+                                          <th class="fillingsValue" custom-sort order="'fillingsValue'" sort="sort">Fillings Value </th>
+                                          <th class="fillingsGrade" custom-sort order="'fillingsGrade'" sort="sort">Fillings Grade </th>
+                                           <th class="srpMaintenanceValue" custom-sort order="'srpMaintenanceValue'" sort="sort">SRP Maintenance Value </th>
+                                          <th class="srpMaintenanceGrade" custom-sort order="'srpMaintenanceGrade'" sort="sort">SRP Maintenance  Grade </th>
+                                          <th class="sealantsValue" custom-sort order="'sealantsValue'" sort="sort">Sealants Value </th>
+                                          <th class="sealantsGrade" custom-sort order="'sealantsGrade'" sort="sort">Sealants Grade </th>
+                                          <th class="sealantsPatientValue" custom-sort order="'sealantsPatientValue'" sort="sort">Sealants Patient Value </th>
+                                          <th class="sealantsPatientGrade" custom-sort order="'sealantsPatientGrade'" sort="sort">Sealants Patient Grade </th>
+                                          <th class="analytics" custom-sort order="'analytics'" sort="sort">Analytics </th>
+                                          <th class="siu" custom-sort order="'siu'" sort="sort">SIU</th>
+                                          <th>Action</th>
+                                      </tr>
+                                  </thead>
+                                  <tfoot>
+                                      <td colspan="8">
+                                          
+                                          <div class="pull-right" >
+                                              <ul class="pagination">
+                                                  <li ng-class="{disabled: currentPage == 0}">
+                                                      <a href ng-click="prevPage()">« Prev</a>
+                                                  </li>
+                                              
+                                                  <li ng-repeat="n in range(pagedItems.length, currentPage, currentPage + gap) "
+                                                      ng-class="{active: n == currentPage}"
+                                                  ng-click="setPage()">
+                                                      <a href ng-bind="n + 1">1</a>
+                                                  </li>
+                                               
+                                                  <li ng-class="{disabled: (currentPage) == pagedItems.length - 1}">
+                                                      <a href ng-click="nextPage()">Next »</a>
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                      </td>
+                                  </tfoot>
+                          
+                                  <tbody>
+                                      <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sort.sortingOrder:sort.reverse | filter: nameFilter">
+                                        
+                                          <td><a href="#">{{item.lastName}}, {{item.firstName}}</a></td>
+                                          <!--td ng-bind="item.network">Network</td>
+                                          <td ng-bind="item.dentalSchool">Dental School</td>
+                                          <td ng-bind="item.practiceDuration">Practice duration to 2013</td>
+                                          <td ng-bind="item.practiceType">Group/Solo Practice</td>
+                                          <td ng-bind="item.speciality">Speciality</td>
+                                          <td ng-bind="item.providerTIN">Provider TIN</td -->
+                                          <td align="center"> <span class="inlinebullet">0,{{item.uniquePatients}} , {{item.claims}}</span></td>
+                                          <td align="center">$&nbsp;{{item.paidClaimAmount}}</td>
+                                          <td align="center">  <span class="dynamicsparkline ">Loading..</span> </td>
+                                          <td align="center" ng-bind="item.adjunctiveGrade">  </td>
+                                          <td align="center"> <span class="dynamicbar">Loading..</span></td>
+                                          <td align="center" ng-bind="item.periapicalGrade">   </td>
+                                          <td align="center"> <span class="inlinesparkline ">1,4,4,7,5,9,10</span></td>
+                                          <td align="center" ng-bind="item.extractionGrade">  </td>
+                                          <td align="center"> <span class="inlinebar">0:2,2:4,4:2,4:1</span></td>
+                                          <td align="center" ng-bind="item.coreBuildupGrade">  </td>
+                                          <td align="center"> <span class="sparkpie">1,5</span></td>
+                                          <td align="center" ng-bind="item.crownGrade">  </td>
+                                          <td align="center"> <span class="sparktristate">1,1,0,1,-1,-1,1,-1,0,0,1,1</span><br /></td>
+                                          <td align="center" ng-bind="item.fillingsGrade"> </td>
+                                          <td align="center"> <span class="sparkpie">20,50,80</span></td>
+                                          <td align="center" ng-bind="item.srpMaintenanceGrade"> </td>
+                                          <td align="center"> <span class="inlinebar">0:2,2:4,4:2,4:1</span></td>
+                                          <td align="center" ng-bind="item.selantsGrade"> </td>
+                                          <td align="center"><span class="inlinesparkline">1,4,4,7,5,9,10</span> </td>
+                                          <td align="center"> <span class="sparkpie">1,5</span></td>
+                                          <td align="center"> <span class="inlinebar">0:2,2:4,4:2,4:1</span></td>
+                                          <td align="center"> <span class="dynamicbar">Loading..</span></td>
+                                          <td align="center">
+                                            <a href="#"> <i class="fa fa-check"></i> </a> &nbsp;/&nbsp;
+                                            <a href="#"> <i class="fa fa-envelope"></i> </a> &nbsp;/&nbsp;
+                                            <a href="#"> <i class="fa fa-edit"></i> </a> &nbsp;/&nbsp;
+                                            <a href="#"> <i class="fa fa-times"></i> </a> 
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div><!-- /.row -->
+
+                        <!--End of dynamic datatables-->
+                    </div>  <!-- / div inner -->          
+                </div>  <!-- / div outer -->  
+            </div> <!-- / # id = content-->
+            <div id="right" class="bg-light lter">
+              <!-- Map box -->
+              <div class="box box-primary">
+                  <div class="box-header">
+                      <!-- tools box -->
+                      <div class="pull-right box-tools">                                        
+                          <button class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="Date range"><i class="fa fa-calendar"></i></button>
+                          <button class="btn btn-primary btn-sm pull-right" data-widget='collapse' data-toggle="tooltip" title="Collapse" style="margin-right: 5px;"><i class="fa fa-minus"></i></button>
+                      </div><!-- /. tools -->
+
+                      <i class="fa fa-map-marker"></i>
+                      <h4 class="box-title">
+                          Demographic
+                      </h4>
+                  </div>
+                  <div class="box-body no-padding">
+                      <div id="world-map" style="height: 150px;"></div>
+                  </div><!-- /.box-body-->
+                  <!-- Chat box -->
+                  <div class="box box-success">
+                    <div class="box-header">
+                        <h4 class="box-title"><i class="fa fa-comments-o"></i> Analytic Feeds</h4>
+                        <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
+                            <div class="btn-group" data-toggle="btn-toggle" >
+                                <button type="button" class="btn btn-default btn-sm active"><i class="fa fa-square text-green"></i></button>                                            
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-square text-red"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body chat" id="chat-box">
+                      <!-- chat item -->
+                      <div class="item">
+                        <div><i class="fa fa-check-square pull-left offline text-green" style="margin-top:2px;"></i>  </div>
+                        <div><small class="text-muted pull-right" style="margin-top:2px;"><i class="fa fa-clock-o "></i> 2:15</small> </div>
+                        <div> <a href="#" class="name text-center" style="margin-left:5px;">Mike Doe </a> </div>
+                        <div>
+                            <p class="message">
+                            Approved the claims
+                          </p>
+                        </div>
+                      </div>
+                      <!-- /.item -->
+                      <!-- chat item -->
+                      <div class="item">
+                        <div><i class="fa fa-times pull-left offline text-red" style="margin-top:2px;"></i>  </div>
+                        <div><small class="text-muted pull-right" style="margin-top:2px;"><i class="fa fa-clock-o"></i> 4:45</small> </div>
+                        <div> <a href="#" class="name text-center" style="margin-left:5px;">John Murray </a> </div>
+                        <div>
+                            <p class="message">
+                            Rejected the claims
+                          </p>
+                        </div>
+                      </div>
+                      <!-- /.item -->
+                      <!-- chat item -->
+                      <div class="item">
+                        <div><i class="fa fa-envelope pull-left offline text-blue" style="margin-top:2px;"></i>  </div>
+                        <div><small class="text-muted pull-right" style="margin-top:2px;"><i class="fa fa-clock-o"></i> 5:32</small> </div>
+                        <div> <a href="#" class="name text-center" style="margin-left:5px;">Mary Kasper </a> </div>
+                        <div>
+                            <p class="message">
+                            Created a note: Report to be reviewed on 06/30/2014
+                          </p>
+                        </div>
+                      </div>
+                      <!-- /.item -->
+                      <!-- chat item -->
+                      <div class="item">
+                        <div><i class="fa fa-check-square pull-left offline text-green" style="margin-top:2px;"></i>  </div>
+                        <div><small class="text-muted pull-right" style="margin-top:2px;"><i class="fa fa-clock-o"></i> 6:15</small> </div>
+                        <div> <a href="#" class="name text-center" style="margin-left:5px;">Mike Doe </a> </div>
+                        <div>
+                            <p class="message">
+                            Approved the claims.
+                          </p>
+                        </div>
+                      </div>
+                      <!-- /.item -->
+                    </div><!-- /.chat -->
+                    
+                </div><!-- /.box (chat box) -->
+
+
+
+
+              </div>
+              <!-- /.box -->
+
+              
+            </div><!-- /#right -->
+          </div><!-- /#wrap -->
+          <footer class="Footer bg-dark dker">
+            <p>2014 &copy; Designed by Metlife DART team</p>
+          </footer><!-- /#footer -->
+
+        </div> <!-- /.bg-dark dk -->
+    <!-- Dash Board Scripts Starts here -->
+    <!--jQuery 2.1.1 -->
+    <script src="web/lib/jquery/jquery.min.js"></script>
+
+    <!--Bootstrap -->
+    <script src="web/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+    <!-- Screenfull -->
+    <script src="web/lib/screenfull/screenfull.js"></script>
+    <script src="web/lib/moment/moment.min.js"></script>
+    <script src="web/lib/fullcalendar/fullcalendar.min.js"></script>
+    <script src="web/lib/jquery.sparkline/jquery.sparkline.min.js"></script>
+    <script src="web/lib/flot/jquery.flot.js"></script>
+    <script src="web/lib/flot/jquery.flot.selection.js"></script>
+    <script src="web/lib/flot/jquery.flot.resize.js"></script>
+    <script src="web/lib/datatables/jquery.dataTables.js"></script>
+    <script src="web/lib/datatables/3/dataTables.bootstrap.js"></script>
+    <script src="web/lib/jquery.tablesorter/jquery.tablesorter.min.js"></script>
+    <script src="web/lib/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <!-- Anjular JS-->
+    <script src="web/lib/angular/angular.min.js"></script>
+    
+    <!-- CORE ADM-PROJECT Script-->
+    <script src="web/js/admDashboard.js"></script>
+    <script src="web/js/demo.js" type="text/javascript"></script>
+    <!-- Metis core scripts -->
+    <script src="web/js/core.min.js"></script>
+
+    <!-- Metis demo scripts -->
+    <script src="web/js/app.min.js"></script>
+    <script src="web/js/app.js"></script>
+
+    <!-- jvectormap -->
+    <script src="web/lib/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+    <script src="web/lib/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+     <!-- jQuery Knob Chart -->
+    <script src="web/lib/jqueryKnob/jquery.knob.js" type="text/javascript"></script>
+    <!-- daterangepicker -->
+    <script src="web/lib/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+       <script>
+      $(function() {
+        Metis.dashboard();
+        Metis.MetisTable();
+        Metis.metisSortable();
+
+      });
+    </script>
+    <script src="web/js/style-switcher.min.js"></script>
+    <!-- Dash Board Scripts /Ends here -->
+  </body>
+</html>
